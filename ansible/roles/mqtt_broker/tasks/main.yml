@@ -2,17 +2,26 @@
   apt:
      name: mosquitto
      state: present
+  become: yes
+
+- name: Install mosquitto clients
+  apt:
+     name: mosquitto-clients
+     state: present
+  become: yes
 
 - name: Configure Mosquitto Mqtt
   template:
     src: mosquitto.conf.j2
     dest: /etc/mosquitto/mosquitto.conf
+  become: yes
 
 - name: Ensure Mosquitto is running
   systemd:
     name: mosquitto
     state: started
     enabled: yes
+  become: yes
 
 
 

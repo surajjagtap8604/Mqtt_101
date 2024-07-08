@@ -9,17 +9,18 @@
   become: yes
 
 - name: Create virtual environment
-  command: python3 -m venv /home/pi/iot_env
+  command: python3 -m venv /home/{{ iot_user }}/iot_env
   args:
-    creates: /home/pi/iot_env
+    creates: /home/{{ iot_user }}/iot_env
 
 - name: install required python packages
   pip:
     name: paho-mqtt
-    virtualenv: /home/pi/iot_env
+    virtualenv: /home/{{ iot_user }}/iot_env
 
 - name: copy sensor script
   template:
     src: sensor.py.j2
-    dest: /home/pi/iot_env
+    dest: /home/{{ iot_user }}/iot_env/sensor.py
     mode: '0755'
+

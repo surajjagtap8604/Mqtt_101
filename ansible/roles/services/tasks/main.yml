@@ -2,12 +2,14 @@
   template:
     src: sensor.service.j2
     dest: /etc/systemd/system/sensor.service
+    mode: '0644'
   notify: Reload systemd
 
 - name: set up subscriber service
   template:
     src: subscriber.service.j2
     dest: /etc/systemd/system/subscriber.service
+    mode: '0644'
   notify: Reload systemd
 
 - name: start and enable services

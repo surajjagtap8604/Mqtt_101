@@ -6,5 +6,5 @@
 - name: Create subscriber script
   template:
     src: subscriber.sh.j2
-    dest: /home/pi/subscriber.sh
+    dest: /home/{{ iot_user }}/subscriber.sh
     mode: '0755'

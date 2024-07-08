@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo systemctl start sensor
 sudo systemctl start subscriber
 
