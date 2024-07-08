@@ -3,9 +3,10 @@ Description=IoT Subscriber Service
 After=network.target mosquitto.service
 
 [Service]
+User={{ iot_user }}
+Group={{ iot_group }}
 ExecStart=/home/pi/subscriber.sh
 Restart=always
-User=pi
 
 [Install]
 WantedBy=multi-user.target
