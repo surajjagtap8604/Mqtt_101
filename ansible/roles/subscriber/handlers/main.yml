@@ -1,0 +1,4 @@
+- name: restart subscriber service
+  systemd: 
+    name: subscriber
+    state: restarted

@@ -1,0 +1,25 @@
+---
+- name: Install python and pip
+  apt:
+    name:
+     - python3
+     - python3-pip
+     - python3-venv
+    state: present
+  become: yes
+
+- name: Create virtual environment
+  command: python3 -m venv /home/pi/iot_env
+  args:
+    creates: /home/pi/iot_env
+
+- name: install required python packages
+  pip:
+    name: paho-mqtt
+    virtualenv: /home/pi/iot_env
+
+- name: copy sensor script
+  template:
+    src: sensor.py.j2
+    dest: /home/pi/iot_env
+    mode: '0755'

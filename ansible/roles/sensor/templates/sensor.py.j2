@@ -1,0 +1,16 @@
+import paho.mqtt.client as mqtt
+import time
+import random
+
+broker = "localhost"
+port =  1883
+topic = "sensor/data"
+
+client  = mqtt.Client()
+client.connect(broker, port, 60)
+
+while True:
+    temperature = random.uniform(20.0,30.0)
+    client.publish(topic,str(temperature))
+    print(f"published: {temperature}°C")
+    time.sleep(5)

@@ -1,0 +1,10 @@
+- name: Ensure Mosquitto client are installed
+  apt: 
+   name: mosquitto-clients
+   state: present
+
+- name: Create subscriber script
+  template:
+    src: subscriber.sh.j2
+    dest: /home/pi/subscriber.sh
+    mode: '0755'

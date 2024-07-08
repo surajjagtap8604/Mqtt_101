@@ -1,0 +1,11 @@
+[Unit]
+Description=IoT Subscriber Service
+After=network.target mosquitto.service
+
+[Service]
+ExecStart=/home/pi/subscriber.sh
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=IoT Sensor Service
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c 'source /home/pi/iot_env/bin/activate && python /home/pi/sensor.py'
+WorkingDirectory=/home/pi
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target

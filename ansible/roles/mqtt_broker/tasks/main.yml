@@ -1,0 +1,18 @@
+- name: Install Mosquitto Mqtt broker
+  apt:
+     name: mosquitto
+     state: present
+
+- name: Configure Mosquitto Mqtt
+  template:
+    src: mosquitto.conf.j2
+    dest: /etc/mosquitto/mosquitto.conf
+
+- name: Ensure Mosquitto is running
+  systemd:
+    name: mosquitto
+    state: started
+    enabled: yes
+
+
+
